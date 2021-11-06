@@ -122,7 +122,7 @@
                 <img src="signup.png" width="40" height="40"> REGISTER</a>
               <div class="dropdown-menu" style="background-color: rgb(0,0,0);background-color: rgba(0,0,0, 0.7);text-decoration: none;color: white;">
                 <a href="signup.php" class="nav-link" style="color: white;text-decoration: none;">EMPLOYEE</a>
-
+                <a href="signupm.php" class="nav-link" style="color: white;margin-top: 5px;">MANAGER</a>
                 <a href="signupa.php" class="nav-link" style="color: white;margin-top: 5px;">ADMINISTRATOR</a>
               </div></li>
               
@@ -132,8 +132,9 @@
                 <img src="logini.png" width="40" height="40"> LOGIN</a>
               <div class="dropdown-menu" style="background-color: rgb(0,0,0);background-color: rgba(0,0,0, 0.7);text-decoration: none;color: white;">
                 <a href="login.php" class="nav-link" style="color: white;text-decoration: none;">EMPLOYEE</a>
-
+                <a href="loginm.php" class="nav-link" style="color: white;margin-top: 5px;">MANAGER</a>
                 <a href="logina.php" class="nav-link" style="color: white;margin-top: 5px;">ADMINISTRATOR</a>
+
               </div>
               </li>
           <ul>

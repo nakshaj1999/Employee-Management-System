@@ -150,7 +150,7 @@
   <center>
   
   <div class="login">
-    <form name="login" id="captcha_form" action="registration.php" onsubmit="return validate()" method="post">
+    <form name="login" id="captcha_form" action="registrationm.php" onsubmit="return validate()" method="post">
       <div class="input-box">
         <span><i class="fa fa-user icon fa-lg"></i></span>
         <input type="email" name="user" id="email" placeholder="EMAIL" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;width: 550px;">

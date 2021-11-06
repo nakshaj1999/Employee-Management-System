@@ -1,6 +1,6 @@
 <?php
 //insert.php
-	$connect = mysqli_connect("localhost:3307", "root", "", "testing");
+	$connect = mysqli_connect("localhost:3000", "root", "", "testing");
 	if(isset($_POST["item_name"]))
 	{
 		 $item_name = $_POST["item_name"];

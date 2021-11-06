@@ -1,7 +1,7 @@
 <?php
 //fetch.php
   session_start();
-$connect = mysqli_connect("localhost:3307", "root", "", "registration");
+$connect = mysqli_connect("localhost:3000", "root", "", "registration");
 $output = '';
 $s=" select * from emp where name='$name'";
 if(isset($_POST["query"]))

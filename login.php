@@ -6,6 +6,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="jquery.passwordstrength.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script type="text/javascript">
     	window.history.forward();
@@ -44,8 +47,8 @@
 				border: 110px;
 				position: absolute;
 				border-color: black;
-				top: 185px;
-				left: 410px;
+				top: 245px;
+				left: 460px;
 				color: black;
 				border-radius: 4px;
 				font-size: 25px; 
@@ -80,32 +83,25 @@
 	<div class="bg-image"></div>
 	<center>
 	
-	<div class="login">
-		<form name="login" action="validate.php" onsubmit="return validate()" method="post">
-		
-			<table cellpadding="25">
+<div class="login">
+		<form name="login" id="captcha_form" action="validate.php" onsubmit="return validate()" method="post"><br>
+			<div class="input-box">
+				<span><i class="fa fa-user icon fa-lg"></i></span>
+				<input type="email" name="user" id="email" placeholder="EMAIL" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;width: 550px;">
+				<span id="email_error" class="text-danger"></span>
+			</div><br>
+			<div class="input-box">
+				<span><i class="fa fa-lock icon fa-lg"></i></span>
+				<input type="password" name="password" id="password" placeholder="PASSWORD" id="password" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;width: 550px;">
+				<span id="password_error" class="text-danger"></span>
+			</div>
+			<div class="g-recaptcha" data-sitekey="6LexDcQZAAAAADB_dK6g2QPntFOZRRTYTYarMdn5">
+				<span id="captcha_error" class="text-danger"></span>
+			</div>
 
-				<tr>
-					<td colspan="2" align="center" style="font-size: 30px;">LOGIN</td>
-				</tr>
-				<tr>
-					<td>EMAIL</td>
-					<td><input type="email" name="user" size="40" class="email" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;"></td>
-				</tr>
-				<tr>
-					<td>PASSWORD</td>
-					<td><input type="password" name="password" class="pass" size="40" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;"></td>
-				</tr>
-
-				<tr>
-					<td colspan="2" align="center"><input type="submit" class="sub" name="submit" value="Submit" style="opacity: 1;font-size: 20px;border-radius: 50px;border: 1px; cursor: pointer;background-color: white;">
-					</td>
-				</tr>
-				<tr>
-					
-					<td colspan="2" align="center" style="font-size: 15px;"><a href="forgot.php" style="text-decoration: none;">Forgot Password?</a></td>
-				</tr>
-		</table>
+			<center><br>
+				<input type="submit" class="sub" id="register" name="submit" value="Submit" style="opacity: 1;font-size: 20px;border-radius: 50px;border: 1px; cursor: pointer;background-color: white;">
+			</center>					
 
 		</div>
 	</form>
@@ -120,11 +116,7 @@
           
           
 
-          if(umail=="" || upass==""){
-            alert("The Fields cannot be left Empty");
-            return false;
-            
-          }
+
 
 
          else{

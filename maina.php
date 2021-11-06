@@ -200,13 +200,13 @@
         </div>
         <div>
           <ul class="navbar-nav"><li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown" data-toggle="dropdown" style="margin-right: 46px;color: white"><?php echo $_SESSION['user']; ?> (ADMIN)</a>
+            <a href="#" class="nav-link dropdown" data-toggle="dropdown" style="margin-right: 46px;color: white"><?php echo $_SESSION['user']; ?> </a>
             <div class="dropdown-menu" style="background-color: rgb(0,0,0); background-color: rgba(10,10,100,0.6); margin-top: 13px;">
               <a href="profileva.php" class="nav-link">Profile</a>
               <a href="#" class="nav-link">Settings</a>
               <a href="#" class="nav-link">Messages</a>
               <a href="profile.php" class="nav-link">Employee Profile</a>
-              <a href="leave.php" class="nav-link">Leave</a>
+              
 
 
 

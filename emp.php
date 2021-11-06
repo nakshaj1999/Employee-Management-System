@@ -51,12 +51,12 @@
 				border: 110px;
 				position: absolute;
 				border-color: black;
-				top: 165px;
+				top: 105px;
 				left: 510px;
 				color: black;
 				border-radius: 4px;
 				font-size: 25px;
-				padding: 30px;
+				padding: 25px;
 				box-shadow: 10px 10px 10px 5px black;
 
 
@@ -104,34 +104,38 @@
 	
 	<div class="login">
 		<form name="login" action="empE.php"  method="post">
-			<table cellpadding="15" >
+			<table cellpadding="15" class="table table-responsive-xs">
 				<tr>
 					<td colspan="2" align="center" style="font-size: 30px;">EMPLOYEE ENTRY</td>
 				</tr>
 
 				<tr>
 					<td>EMAIL</td>
-					<td><input type="email" name="email" size="20" class="email" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;"></td>
+					<td><input type="email" name="email" size="20" class="form-control" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;"></td>
 				</tr>
 				<tr>
 					<td>NAME</td>
-					<td><input type="text" name="name" size="20" class="email" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;"></td>
+					<td><input type="text" name="name" size="20" class="form-control" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;"></td>
 				</tr>
 				<tr>
 					<td>DOB</td>
-					<td><input type="date" name="dob" size="40" class="email" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;"></td>
+					<td><input type="date" name="dob" size="40" class="form-control" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;"></td>
 				</tr>
 				<tr>
 					<td>HIRE DATE</td>
-					<td><input type="date" name="hdate" size="40" class="email" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;"></td>
+					<td><input type="date" name="hdate" size="40" class="form-control" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;"></td>
 				</tr>				
 				<tr>
 					<td>SALARY</td>
-					<td><input type="number" name="salary" class="pass" size="40" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;"></td>
+					<td><input type="number" name="salary" class="form-control" size="40" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;"></td>
 				</tr>
 				<tr>
+					<td>MANAGER</td>
+					<td><input type="email" name="mgr" size="20" class="form-control" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;"></td>
+				</tr>				
+				<tr>
 					<td>DEPT NO.</td>
-					<td><input type="number" name="deptno" size="40" class="email" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;"></td>
+					<td><input type="number" name="deptno" size="40" class="form-control" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;"></td>
 				</tr>
 				</tr>
 

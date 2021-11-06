@@ -2,13 +2,14 @@
     session_start();
     if(isset($_POST['empid'])){
 
-    $conn=mysqli_connect("localhost:3307","root","","registration");
+    $conn=mysqli_connect("localhost:3000","root","","registration");
 
 
 
     if(isset($_REQUEST['submit'])){
       $sql="delete from emp where empid={$_REQUEST['empid']}";
-      if(mysqli_query($conn, $sql)){
+      $sql1="delete from usertable where empid={$_REQUEST['empid']}";
+      if(mysqli_query($conn, $sql) and mysqli_query($conn, $sql1)){
         header("location: del.php");
       }
     }
@@ -61,11 +62,11 @@
         border: 110px;
         position: absolute;
         border-color: black;
-        top: 140px;
-        left: 25px;
+        top: 80px;
+        left: -80px;
         color: black;
         border-radius: 4px;
-        font-size: 25px;
+        font-size: 20px;
         padding: 30px;
         box-shadow: 10px 10px 10px 5px black;
 
@@ -101,7 +102,7 @@
         	text-align: center;
   		}
 
-      .logins{
+            .logins{
         opacity: 0.9;
         background-color: white;
         margin-left: 4px;
@@ -109,11 +110,11 @@
         position: absolute;
         border-color: black;
         top: 105px;
-        left: 1200px;
+        left: 500px;
         color: black;
         border-radius: 4px;
         font-size: 15px; 
-        padding: 30px;
+        padding: 5px;
         box-shadow: 10px 10px 10px 8px black;
 
 
@@ -160,6 +161,35 @@
       }
       .lis:hover {
         color: lightblue;
+      }
+      .my-custom-scrollbar {
+        top: 200px;
+        width: 100%;
+        background-color: white;
+        color: black;
+        position: relative;
+        opacity: 0.8;
+        top: 200px;
+        left: 0px;
+        background-color: white;
+        border: 1px;
+        
+        font-size: 20px; 
+        
+        box-shadow: 10px 10px 10px 8px black;color: black;
+        overflow: auto;
+        }
+      .table-wrapper-scroll-y {
+        display: inline-block;
+        height: 500px;
+        position: absolute;
+      }
+      th {
+        background: white;
+        position: sticky;
+        top: 0; /* Don't forget this, required for the stickiness */
+        
+        
       }
 
   		
@@ -269,29 +299,42 @@
     		</div>
     </nav>
     <form class="logins" action="" method="POST">
-      <input type="text" name="field" placeholder="Field"><br><br>
-      <input type="text" name="search" placeholder="Filter"><br><br>
-      <input type="submit" name="submit" class="sub" style="opacity: 1;font-size: 20px;border-radius: 50px;border: 1px; cursor: pointer;background-color: white;margin-left: 45px;" value="Search" class="sub">
+      <table cellpadding="5">
+        <tr>
+          <td><input type="text" name="field" placeholder="Field"></td>
+          <td><input type="text" name="search" placeholder="Filter"></td>
+          <td><input type="submit" name="submit" class="sub" style="opacity: 1;font-size: 20px;border-radius: 50px;border: 1px; cursor: pointer;background-color: white;margin-left: 45px;" value="Search" class="sub"></td>
+        </tr>
+      </table>
+      
+      
+      
     </form>
     </table>
-          <table cellpadding="10" class="login" border="10" >
-            <tr>
-              <th>EMPID</th>
-              <th>NAME</th>
-              <th>DOB</th>
-              <th>SALARY</th>
-              <th>DEPTNO</th>
-              <th>DEPARTMENT</th>
-              <th>ACTION</th>
-            </tr>
 
-             <?php
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+      <table class="table table-bordered table-fixed" cellpadding="50">
+        <thead>
+            <tr>
+              <th class="col-xs-1" scope="row">EMPID</th>
+              <th class="col-xs-1" scope="row">EMAIL</th>
+              <th class="col-xs-1" scope="row">NAME</th>
+              <th class="col-xs-1" scope="row">HDATE</th>
+              <th class="col-xs-1" scope="row">SALARY</th>
+              <th class="col-xs-1" scope="row">DEPTNO</th>
+              <th class="col-xs-1" scope="row">DEPT</th>
+              <th class="col-xs-1" scope="row">ACTION</th>
+              
+            </tr>
+        </thead>
+        <tbody>
+            <?php
                 if(isset($_POST['search'])){
                   $search=$_POST['search'];
                   $field=$_POST['field'];
-                  $conn=mysqli_connect("localhost:3307","root","","registration"); 
+                  $conn=mysqli_connect("localhost:3000","root","","registration"); 
 
-                  $sql="select emp.empid,emp.name,emp.dob,emp.salary,emp.deptno,dept.dept from dept, emp where dept.deptno=emp.deptno and emp.$field like '%$search%' order by $field";
+                  $sql="select emp.empid,emp.email,emp.name,emp.dob,emp.salary,emp.deptno,dept.dept from dept, emp where dept.deptno=emp.deptno and emp.$field like '%$search%' order by $field";
                   $result=mysqli_query($conn,$sql);
                   $num=mysqli_num_rows($result);
                   
@@ -301,17 +344,39 @@
                   
                     while ($row=$result-> fetch_assoc()) {
                       if($sql){
-                        echo "<tr><td>".$row['empid']."</td><td>".$row['name']."</td><td>".$row['dob']."</td><td>".$row['salary']."</td><td>".$row['deptno']."</td><td>".$row['dept']."</td><td><form action='' method='post'><input type='hidden' name='empid' value=" .$row['empid'] ."><input type='submit' class='btn btn-sm btn-primary' name='submit' value='DELETE' style='color: white;'></form></td></tr>";
+                        echo "<tr><td class='col-xs-1' scope='col'>".$row['empid']."</td><td class='col-xs-1' scope='col'>".$row['email']."</td><td class='col-xs-1' scope='col'>".$row['name']."</td><td class='col-xs-1' scope='col'>".$row['dob']."</td><td class='col-xs-1' scope='col'>".$row['salary']."</td><td class='col-xs-1' scope='col'>".$row['deptno']."</td><td class='col-xs-1' scope='col'>".$row['dept']."</td><td class='col-xs-1' scope='col'><form action='' method='post'><input type='hidden' name='empid' value=" .$row['empid'] ."><input type='submit' class='btn btn-sm btn-danger' name='submit' value='DELETE' style='color: white;'></form></td></tr>";
 
                       }
 
                     }
                   }
                 }
+                else{
+                  $conn=mysqli_connect("localhost:3000","root","","registration"); 
+
+                  $sql="select emp.empid,emp.name,emp.email,emp.dob,emp.salary,emp.deptno,dept.dept from dept, emp where dept.deptno=emp.deptno";
+                  $result=mysqli_query($conn,$sql);
+                  $num=mysqli_num_rows($result); 
+                  if($sql){
+
+
+                  
+                    while ($row=$result-> fetch_assoc()) {
+                      if($sql){
+                        echo "<tr><td class='col-xs-1' scope='col'>".$row['empid']."</td><td class='col-xs-1' scope='col'>".$row['email']."</td><td class='col-xs-1' scope='col'>".$row['name']."</td><td class='col-xs-1' scope='col'>".$row['dob']."</td><td class='col-xs-1' scope='col'>".$row['salary']."</td><td class='col-xs-1' scope='col'>".$row['deptno']."</td><td class='col-xs-1' scope='col'>".$row['dept']."</td><td class='col-xs-1' scope='col'><form action='' method='post'><input type='hidden' name='empid' value=" .$row['empid'] ."><input type='submit' class='btn btn-sm btn-danger' name='submit' value='DELETE' style='color: white;'></form></td></tr>";
+
+                      }
+
+                    }
+                  }                                   
+                }
                   
              ?>
+                
+        </tbody>
         
-    </table>
+      </table>
+
     
     
 
@@ -328,3 +393,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+$('#dtVerticalScrollExample').DataTable({
+"scrollY": "200px",
+"scrollCollapse": true,
+});
+$('.dataTables_length').addClass('bs-select');
+});
+</script>

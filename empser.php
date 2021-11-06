@@ -50,7 +50,7 @@
         border: 110px;
         position: absolute;
         border-color: black;
-        top: 140px;
+        top: 240px;
         left: 100px;
         color: black;
         border-radius: 4px;
@@ -96,11 +96,11 @@
         position: absolute;
         border-color: black;
         top: 105px;
-        left: 1200px;
+        left: 500px;
         color: black;
         border-radius: 4px;
         font-size: 15px; 
-        padding: 30px;
+        padding: 5px;
         box-shadow: 10px 10px 10px 8px black;
 
 
@@ -143,6 +143,37 @@
       .lis:hover {
         color: lightblue;
       }
+      .sub:hover{
+        box-shadow: 0 0 10px 0 black;
+      }
+      .my-custom-scrollbar {
+        top: 200px;
+        width: 100%;
+        background-color: white;
+        color: black;
+        position: relative;
+        opacity: 0.8;
+        top: 200px;
+        left: 0px;
+        background-color: white;
+        border: 1px;
+        
+        font-size: 20px; 
+        
+        box-shadow: 10px 10px 10px 8px black;color: black;
+        overflow: auto;
+        }
+      .table-wrapper-scroll-y {
+        display: inline-block;
+        height: 500px;
+        position: absolute;
+      }
+      th {
+        background: white;
+        position: sticky;
+        top: 0; /* Don't forget this, required for the stickiness */
+        
+      }      
 
       
     </style>
@@ -251,22 +282,30 @@
         </div>
     </nav>
     
-      <form class="logins" action="" method="POST">
-      <input type="text" name="field" placeholder="empid/name"><br><br>
-      <input type="text" name="search" placeholder="Filter"><br><br>
-      <input type="submit" name="submit" class="sub" style="opacity: 1;font-size: 20px;border-radius: 50px;border: 1px; cursor: pointer;background-color: white;margin-left: 45px;" value="Search" class="sub">
+    <form class="logins" action="" method="POST">
+      <table cellpadding="5">
+        <tr>
+          <td><input type="text" name="field" placeholder="Field"></td>
+          <td><input type="text" name="search" placeholder="Filter"></td>
+          <td><input type="submit" name="submit" class="sub" style="opacity: 1;font-size: 20px;border-radius: 50px;border: 1px; cursor: pointer;background-color: white;margin-left: 45px;" value="Search" class="sub"></td>
+        </tr>
+      </table>
+      
+      
+      
     </form>
     </table>
-          <table cellpadding="5" class="login" border="10">
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+      <table class="table table-bordered table-fixed" style="font-size: 20px;">
             <tr>
-              <th>EMPID</th>
-              <th>EMAIL</th>
-              <th>NAME</th>
-              <th>DOB</th>
-              <th>HIRE DATE</th>
-              <th>SALARY</th>
-              <th>DEPTNO</th>
-              <th>DEPARTMENT</th>
+              <th class="col-xs-1" scope="col">EMPID</th>
+              <th class="col-xs-1" scope="col">EMAIL</th>
+              <th class="col-xs-1" scope="col">NAME</th>
+              <th class="col-xs-1" scope="col">DOB</th>
+              <th class="col-xs-1" scope="col">HIRE DATE</th>
+              <th class="col-xs-1" scope="col">SALARY</th>
+              <th class="col-xs-1" scope="col">DEPTNO</th>
+              <th class="col-xs-1" scope="col">DEPARTMENT</th>
             </tr>
 
              <?php
@@ -275,7 +314,7 @@
 
                   $search=$_POST['search'];
                   $field=$_POST['field'];
-                  $conn=mysqli_connect("localhost:3307","root","","registration"); 
+                  $conn=mysqli_connect("localhost:3000","root","","registration"); 
 
                   $sql="select emp.empid,emp.email,emp.name,emp.dob,emp.hdate,emp.salary,emp.deptno,dept.dept from dept, emp where dept.deptno=emp.deptno and emp.$field like '%$search%' order by $field";
 
@@ -290,7 +329,7 @@
                   
                     while ($row=$result-> fetch_assoc()) {
                       if($sql){
-                        echo "<tr><td>".$row['empid']."</td><td>".$row['email']."</td><td>".$row['name']."</td><td>".$row['dob']."</td><td>".$row['hdate']."</td><td>".$row['salary']."</td><td>".$row['deptno']."</td><td>".$row['dept']."</td></tr>";
+                        echo "<tr><td class='col-xs-1' scope='col'>".$row['empid']."</td><td class='col-xs-1' scope='col'>".$row['email']."</td><td class='col-xs-1' scope='col'>".$row['name']."</td><td class='col-xs-1' scope='col'>".$row['dob']."</td><td class='col-xs-1' scope='col'>".$row['hdate']."</td><td class='col-xs-1' scope='col'>".$row['salary']."</td><td class='col-xs-1' scope='col'>".$row['deptno']."</td><td class='col-xs-1' scope='col'>".$row['dept']."</td></tr>";
 
                       }
 
@@ -301,6 +340,25 @@
 
                     }
                   }
+                }
+                else{
+                  $conn=mysqli_connect("localhost:3000","root","","registration"); 
+
+                  $sql="select emp.empid,emp.name,emp.email,emp.dob,emp.hdate,emp.salary,emp.deptno,dept.dept from dept, emp where dept.deptno=emp.deptno";
+                  $result=mysqli_query($conn,$sql);
+                  $num=mysqli_num_rows($result); 
+                  if($sql){
+
+
+                  
+                    while ($row=$result-> fetch_assoc()) {
+                      if($sql){
+                        echo "<tr><td class='col-xs-1' scope='col'>".$row['empid']."</td><td class='col-xs-1' scope='col'>".$row['email']."</td><td class='col-xs-1' scope='col'>".$row['name']."</td><td class='col-xs-1' scope='col'>".$row['dob']."</td><td class='col-xs-1' scope='col'>".$row['hdate']."</td><td class='col-xs-1' scope='col'>".$row['salary']."</td><td class='col-xs-1' scope='col'>".$row['deptno']."</td><td class='col-xs-1' scope='col'>".$row['dept']."</td></tr>";
+
+                      }
+
+                    }
+                  }                                   
                 }
                   
              ?>

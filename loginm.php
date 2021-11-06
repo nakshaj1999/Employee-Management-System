@@ -17,7 +17,7 @@
 
     </script>
 
-    <title>Login Admin</title>
+    <title>Login Manager</title>
   
 
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -84,7 +84,7 @@
 	<center>
 	
 <div class="login">
-		<form name="login" id="captcha_form" action="validatea.php" onsubmit="return validate()" method="post"><br>
+		<form name="login" id="captcha_form" action="validatem.php" onsubmit="return validate()" method="post"><br>
 			<div class="input-box">
 				<span><i class="fa fa-user icon fa-lg"></i></span>
 				<input type="email" name="user" id="email" placeholder="EMAIL" style="border-radius: 6px; border: 1px;box-shadow: 0 0 20px 0 black;font-size: 15px;width: 550px;">

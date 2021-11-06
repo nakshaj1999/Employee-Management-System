@@ -206,7 +206,9 @@
               <a href="leave.php" class="nav-link">Leave Application</a>
               <a href="dependentv.php" class="nav-link">Dependent View</a>
 
-    					<form action="logout.php" method="post"><input type="submit" value="Logout" class="logout" name="logout" style="border-radius: 10px;margin-top: 10px;margin-left: 30px; background-color: white;color: blacks;width: 100px;opacity: 0.9;"></form>
+    					<form action="logout.php" method="post">
+                <input type="submit" value="Logout" class="logout" name="logout" style="border-radius: 10px;margin-top: 10px;margin-left: 30px; background-color: white;color: blacks;width: 100px;opacity: 0.9;">
+              </form>
     				</div>
     				
 

@@ -1,12 +1,14 @@
 <?php
-
-    session_start();
-    if(!isset($_SESSION["username"])){
-      header("location: login.php");
+  session_start();
+      if(!isset($_SESSION["user"])){
+      header("location: loginm.php");
         # code...
       }
-    
+
+ 
+
 ?>
+
 
 <html lang="en">
   <head>
@@ -15,7 +17,7 @@
       window.history.forward();
     </script>
 
-    <title>Profile</title>
+    <title>Dependent Profile</title>
     <meta http-equiv="refresh" content="900;url=logout.php" />
 
   	
@@ -58,15 +60,6 @@
         	border-radius: 50px;
         	text-align: center;
   		}
-                              .logout:hover{
-              cursor: pointer;
-              box-shadow: 0 0 10px 0 white;
-              box-shadow: 0px 5px 10px 0 white;
-              border-radius: 50px;
-              text-align: center;    
-
-
-            }
       .login{
         opacity: 0.9;
         background-color: white;
@@ -74,8 +67,8 @@
         border: 110px;
         position: absolute;
         border-color: black;
-        top: 145px;
-        left: 500px;
+        top: 125px;
+        left: 440px;
         color: black;
         border-radius: 4px;
         font-size: 25px; 
@@ -140,7 +133,7 @@
     		<a href="https://sail.co.in/" target="_blank" class="navbar-brand" style="color: white;">
     			<img src="sail.png" width="40" height="40">
     		Steel Authority Of India Ltd.</a>
-    		<a href="main.php" class="navbar-brand">
+    		<a href="mainm.php" class="navbar-brand">
     			<img src="new.png" width="75" height="40" style="margin-left: 10px;">
     		</a>
 
@@ -201,7 +194,7 @@
 	    			</li>
             
             <li class="nav-item dropdown">
-              <a href="dependent.php" class="nav-link " style="color: white;margin-left: 50px;">Dependent</a>
+              <a href="dependentm.php" class="nav-link " style="color: white;margin-left: 50px;">Dependent</a>
               <div class="dropdown-menu " style="background-color: rgb(0,0,0); background-color: rgba(10,10,100,0.6); margin-top: 13px;">
                 <a href="dependent.php" class="nav-link"></a>
               </div>
@@ -214,15 +207,15 @@
     		</div>
     		<div>
     			<ul class="navbar-nav"><li class="nav-item dropdown">
-    				<a href="#" class="nav-link dropdown" data-toggle="dropdown" style="margin-right: 46px;color: white"><?php echo $_SESSION['username']; ?></a>
+    				<a href="#" class="nav-link dropdown" data-toggle="dropdown" style="margin-right: 46px;color: white"><?php echo $_SESSION['user']; ?></a>
     				<div class="dropdown-menu" style="background-color: rgb(0,0,0); background-color: rgba(10,10,100,0.6); margin-top: 13px;">
     					<a href="#" class="nav-link">Profile</a>
     					<a href="#" class="nav-link">Settings</a>
     					<a href="#" class="nav-link">Messages</a>
               <a href="leave.php" class="nav-link">Leave Application</a>
-              <a href="dependentv.php" class="nav-link">Dependent View</a>
+              <a href="dependentvm.php" class="nav-link">Dependent View</a>
 
-    					<form action="logout.php" method="post"><input type="submit" value="Logout" class="logout" name="logout" style="border-radius: 10px;margin-top: 10px;margin-left: 30px; background-color: white;color: black;width: 100px;opacity: 0.9;"></form>
+    					<form action="logout.php" method="post"><input type="submit" value="Logout" class="logout" name="logout" style="border-radius: 10px;margin-top: 10px;margin-left: 30px; background-color: rgb(0,0,0);background-color: rgba(10,10,100,0.6);color: white;width: 100px;opacity: 0.5;"></form>
     				</div>
     				
 
@@ -231,18 +224,18 @@
     </nav>
 
     </table>
-          <table cellpadding="15" class="login">
+          <table cellpadding="25" class="login">
             <tr>
-              <td colspan="2" align="center" style="background-color: rgb(0,0,0); background-color: rgba(10,10,100,0.6);color: white;">PROFILE</td>
-            </tr>
+              <td colspan="2" align="center" style="background-color: rgb(0,0,0); background-color: rgba(10,10,100,0.6);color: white;">DEPENDENT PROFILE</td>
+            </tr>            
 
 
              <?php
                   
                   $conn=mysqli_connect("localhost:3000","root","","registration"); 
-                  $a=$_SESSION['username'];
+                  $a=$_SESSION['user'];
 
-                  $sql="select * from profile where user='$a'";
+                  $sql="select * from dependent where user='$a'";
                   $result=mysqli_query($conn,$sql);
                   $num=mysqli_num_rows($result);
                   
@@ -252,7 +245,7 @@
                   
                     while ($row=$result-> fetch_assoc()) {
                       if($sql){
-                        echo "<tr><th>EMAIL :</th><td>".$row['user']."</td></tr><tr><th>NAME :</th><td>".$row['name']."</td></tr><tr><th>DOB :</th><td>".$row['dob']."</td></tr><tr><th>DEGREE :</th><td>".$row['degree']."</td></tr><tr><th>DESIGNATION :</th><td>".$row['desgn']."</td></tr><tr><th>HIRE DATE :</th><td>".$row['hdate']."</td></tr><tr><th>DEPTNO :</th><td>".$row['deptno']."</td></tr>";
+                        echo "<tr><th>USER :</th><td>".$row['user']."</td></tr><tr><th>FATHER'S NAME :</th><td>".$row['fname']."</td></tr><tr><th>FATHER'S OCCUPATION :</th><td>".$row['fooc']."</td></tr><tr><th>MOTHER'S NAME :</th><td>".$row['mname']."</td></tr><tr><th>MOTHER'S OCCUPATION :</th><td>".$row['mooc']."</td></tr>";
 
                       }
 

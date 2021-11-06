@@ -1,7 +1,7 @@
 <? php
 	
 
-	$conn=mysqli_connect("localhost:3307","root","","userregistration");
+	$conn=mysqli_connect("localhost:3000","root","","userregistration");
 
 	$s="select * from usertable";
 	$result=mysqli_query($conn,$s);

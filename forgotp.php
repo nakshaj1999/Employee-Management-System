@@ -2,7 +2,7 @@
 	session_start();
 
 
-	$con=mysqli_connect('localhost:3307','root','');
+	$con=mysqli_connect('localhost:3000','root','');
 	mysqli_select_db($con,'registration');
 
 	$name=$_POST['user'];

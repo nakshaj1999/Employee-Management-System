@@ -232,7 +232,7 @@
 
              <?php
                   
-                  $conn=mysqli_connect("localhost:3307","root","","registration"); 
+                  $conn=mysqli_connect("localhost:3000","root","","registration"); 
                   $a=$_SESSION['username'];
 
                   $sql="select * from dependent where user='$a'";

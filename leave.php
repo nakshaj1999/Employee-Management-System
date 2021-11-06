@@ -119,6 +119,7 @@
 					<td>NAME</td>
 					<td><input type="text" name="name" size="18" class="form-control" class="form-control" style="border-radius: 10px;"></td>
 				</tr>
+				
 				<tr>
 					<td>TYPE</td>
 					<td><select name="ltype"class="form-control" style="border-radius: 10px;">

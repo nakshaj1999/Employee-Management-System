@@ -3,13 +3,14 @@
 	session_start();
 
 
-	$con=mysqli_connect('localhost:3307','root','','registration');
+	$con=mysqli_connect('localhost:3000','root','','registration');
 	
 	$email=$_POST['email'];
 	$name=$_POST['name'];
 	$dob=$_POST['dob'];
 	$hdate=$_POST['hdate'];
 	$salary=$_POST['salary'];
+	$mgr=$_POST['mgr'];
 	$deptno=$_POST['deptno'];
 
 	$s=" select * from emp where name='$name'";
@@ -25,7 +26,7 @@
 		
 	}
 	else{
-		$reg="insert into emp(email,name,dob,hdate,salary,deptno) values ('$email','$name','$dob','$hdate','$salary','$deptno')";
+		$reg="insert into emp(email,name,dob,hdate,salary,mgr,deptno) values ('$email','$name','$dob','$hdate','$salary','$mgr','$deptno')";
 		mysqli_query($con,$reg);
 		header("location: emp.php");
 

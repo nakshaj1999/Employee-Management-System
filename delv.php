@@ -271,7 +271,7 @@
 
                   $search=$_POST['search'];
                   $field=$_POST['field'];
-                  $conn=mysqli_connect("localhost:3307","root","","registration"); 
+                  $conn=mysqli_connect("localhost:3000","root","","registration"); 
 
                   $sql="select emp.empid, holiday.email, holiday.name, holiday.ltype, holiday.dfrom, holiday.dto, holiday.reason, emp.deptno from holiday, emp where holiday.email=emp.email and holiday.$field like '%$search%' order by $field  ";
 

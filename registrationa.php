@@ -2,15 +2,14 @@
 	session_start();
 
 
-	$con=mysqli_connect('localhost:3307','root','');
+	$con=mysqli_connect('localhost:3000','root','');
 	mysqli_select_db($con,'registration');
 
 	$name=$_POST['user'];
 	$pass=$_POST['password'];
+	$pass1=base64_encode($pass);
 
 	$s=" select * from usertablea where user ='$name' ";
-	$result=mysqli_query($con,$s);
-	$num=mysqli_num_rows($result);
 
 	if($num==1){
 		echo "Name Aldready taken";
@@ -18,7 +17,7 @@
 		
 	}
 	else{
-		$reg="insert into usertablea(user,password) values ('$name','$pass')";
+		$reg="insert into usertablea (user,password) values ('$name','$pass1')";
 		mysqli_query($con,$reg);
 		header("Location: logina.php");
 

@@ -3,7 +3,7 @@
 	session_start();
 
 
-	$con=mysqli_connect('localhost:3307','root','','registration');
+	$con=mysqli_connect('localhost:3000','root','','registration');
 	
 
 	$email=$_POST['email'];

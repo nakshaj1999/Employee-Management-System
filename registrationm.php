@@ -10,7 +10,7 @@
 	$pass=$_POST['password'];
 	$pass1=base64_encode($pass);
 
-	$s=" select * from usertable where user ='$name' ";
+	$s=" select * from usertablem where user ='$name' ";
 	$s1="select email from emp where email='$name'";
 	$result=mysqli_query($con,$s);
 	$num=mysqli_num_rows($result);
@@ -26,7 +26,7 @@
 				header("Location: signup.php");
 			}
 			else{
-				$reg="insert into usertable(name,empid,password) values ('$name','$empid','$pass1')";
+				$reg="insert into usertablem(name,empid,password) values ('$name','$empid','$pass1')";
 				mysqli_query($con,$reg);
 				header("Location: login.php");
 				

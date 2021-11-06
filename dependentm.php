@@ -1,8 +1,8 @@
 <?php 
 
 	session_start();
-	    if(!isset($_SESSION["username"])){
-      header("location: login.php");
+	    if(!isset($_SESSION["user"])){
+      header("location: loginm.php");
         # code...
       }
 ?>
@@ -75,7 +75,7 @@
         <a href="https://sail.co.in/" target="_blank" class="navbar-brand" style="color: white">
           <img src="sail.png" width="40" height="40"> Steel Authority of India Ltd.</a>
 
-          <a href="main.php" class="navbar-brand">
+          <a href="mainm.php" class="navbar-brand">
     			<img src="new.png" width="95" height="40" style="margin-left: 1000px;">
     		</a>
       </nav>
@@ -83,7 +83,7 @@
 	<center>
 	
 	<div class="login">
-		<form name="login" action="dependentr.php"  method="post">
+		<form name="login" action="dependentrm.php"  method="post">
 			<table cellpadding="3" align="center">
 				<tr>
 					<td colspan="2" align="center" style="font-size: 30px;">Dependent</td>
@@ -91,7 +91,7 @@
 
 				<tr>
 					<td>EMAIL</td>
-					<td><input type="email" name="user" size="18" class="form-control" class="form-control" value="<?php echo $_SESSION['username']; ?>" readonly style="border-radius: 10px;"></td>
+					<td><input type="email" name="user" size="18" class="form-control" class="form-control" value="<?php echo $_SESSION['user']; ?>" readonly style="border-radius: 10px;"></td>
 				</tr>
 				<tr>
 					<td>Father's Name</td>
